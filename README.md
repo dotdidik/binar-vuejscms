@@ -17,4 +17,4 @@ npm run dev
 
 Jangan capek untuk koding
 
-Didik Irawan
+S  A  G
