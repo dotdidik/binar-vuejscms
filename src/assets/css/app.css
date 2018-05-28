@@ -1,0 +1,38 @@
+.full-widht {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    height: 100%;
+}
+.left-menu-20 {
+    width: 20%;
+    background: white;
+    height: 100%;
+}
+.right-full-80 {
+    width: 80%;
+    background: wheat;
+    height: 100%;
+
+}
+.header {
+    height: 60px;
+    background: pink;
+}
+
+.btn-info {
+    background-color: #929292;
+    border-color: #fff;
+}
+.cms-content {
+    padding: 30px;
+}
+.login {
+    text-align: center;
+    width: 300px;
+    position: absolute;
+    left: 38%;
+    background: #cfcfcf;
+    top: 31%;
+    padding: 16px;  
+}
