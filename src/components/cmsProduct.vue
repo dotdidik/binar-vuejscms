@@ -1,37 +1,17 @@
 <template>
     <div>
         <div class="cms-content">
+            <div class="col-12 d-flex">
             <div class="row">
-                <div class="col-12 d-flex">
-                    <b-card class="col-md-4" title="Title"
-                            img-src="https://placekitten.com/500/350"
+                    <b-card class="col-md-4" v-for="post in posts" :key="post.id" :title="post.title"
+                            :img-src="post.categories"
                             img-fluid
                             img-alt="image"
                             img-top>
                         <p class="card-text">
-                            This card has supporting text below as a natural lead-in to additional content.
+                            {{ post.content }}
                         </p>
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </b-card>
-                    <b-card class="col-md-4" title="Title"
-                            img-src="https://placekitten.com/500/350"
-                            img-fluid
-                            img-alt="image"
-                            img-top>
-                        <p class="card-text">
-                            This card has supporting text below as a natural lead-in to additional content.
-                        </p>
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </b-card>
-                    <b-card class="col-md-4" title="Title"
-                            img-src="https://placekitten.com/500/350"
-                            img-fluid
-                            img-alt="image"
-                            img-top>
-                        <p class="card-text">
-                            This card has supporting text below as a natural lead-in to additional content.
-                        </p>
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                                <button type="button" class="btn btn-outline-danger" @click="deletePost(post.id)">Delete</button>
                     </b-card>
                 </div>
             </div>
@@ -40,8 +20,39 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+    data() {
+        return {
+            posts: []
+        }
+    },
+    created() {
+        this.getPost()
+    },
+    methods: {
+        getPost(){
+            return axios.get('http://reduxblog.herokuapp.com/api/posts?key=didik')
+            .then(response => {
+                this.posts = response.data
+                console.log(response.data)
+            })          
+        },
+        deletePost(id) {
+            if(confirm('Are You Sure?')) {
+              fetch(`http://reduxblog.herokuapp.com/api/posts/${id}?key=didik`, {
+                method: 'delete'
+              })
+                .then(res => res.json())
+                .then(data => {
+                  alert('Article Removed');
+                  this.getPost();
+                })
+                .catch(err => console.log(err))
+            }
+        },
 
+    }
 }
 </script>
 

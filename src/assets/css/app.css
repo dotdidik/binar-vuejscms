@@ -6,14 +6,17 @@
 }
 .left-menu-20 {
     width: 20%;
-    background: white;
+    background: #cfc6c6;
     height: 100%;
+    position: fixed;
 }
 .right-full-80 {
     width: 80%;
-    background: wheat;
+    background: #fff;
     height: 100%;
-
+    float: right;
+    position: absolute;
+    right: 0;
 }
 .header {
     height: 60px;
